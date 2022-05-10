@@ -212,8 +212,26 @@
             <option value="Other">Other</option>
           </select>
         </div>
-        <button type="submit" id="btnSubmit" href="/" class="button" onclick="userAction()">Submit</button>
+        <button type="submit" id="btnSubmit" href="/" class="button">Submit</button>
       </form>
+            <script>
+        const thisForm = document.getElementById('interactionForm');
+        if(thisForm){
+        thisForm.addEventListener('submit', async function (e) {
+              e.preventDefault();
+              const formData = new FormData(thisForm).entries()
+              const response = await fetch('https://self-1b6-dev-ed.lightning.force.com/services/apexrest/Interactions/', {
+                  method: 'POST',
+            mode: 'cors',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(Object.fromEntries(formData))
+              });
+    
+              const result = await response.json();
+              console.log(result)
+        });
+        }
+        </script>
     </div>
   </body>
 </html>
