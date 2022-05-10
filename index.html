@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="vendor/jquery.js"></script>
+    <script type="text/javascript" src="vendor/seriallizejson.js"></script>    
+    <script src="app.js"></script>
+    <title>Order form</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <style>
+      html, body {
+      height: 100%;
+      }
+      body, input, select { 
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 16px;
+      color: #eee;
+      }
+      h1, h3 {
+      font-weight: 400;
+      }
+      h1 {
+      font-size: 32px;
+      }
+      h3 {
+      color: #1c87c9;
+      }
+      .main-block, .info {
+      display: flex;
+      flex-direction: column;
+      }
+      .main-block {
+      justify-content: center;
+      align-items: center;
+      width: 100%; 
+      min-height: 100%;
+      background-size: cover;
+      background-color: #095484;
+      }
+      form {
+      width: 80%; 
+      padding: 25px;
+      margin-bottom: 20px;
+      background: rgba(0, 0, 0, 0.9);
+      }
+      input, select {
+      padding: 5px;
+      margin-bottom: 20px;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #eee;
+      }
+      input::placeholder {
+      color: #eee;
+      }
+      option {
+      background: black; 
+      border: none;
+      }
+      .metod {
+      display: flex; 
+      }
+      input[type=radio] {
+      display: none;
+      }
+      label.radio {
+      position: relative;
+      display: inline-block;
+      margin-right: 20px;
+      text-indent: 32px;
+      cursor: pointer;
+      }
+      label.radio:before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: 0;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      border: 2px solid #1c87c9;
+      }
+      label.radio:after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 4px;
+      top: 5px;
+      left: 5px;
+      border-bottom: 3px solid #1c87c9;
+      border-left: 3px solid #1c87c9;
+      transform: rotate(-45deg);
+      opacity: 0;
+      }
+      input[type=radio]:checked + label:after {
+      opacity: 1;
+      }
+      button {
+      display: block;
+      width: 200px;
+      padding: 10px;
+      margin: 20px auto 0;
+      border: none;
+      border-radius: 5px; 
+      background: #1c87c9; 
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      }
+      button:hover {
+      background: #095484;
+      }
+      @media (min-width: 568px) {
+      .info {
+      flex-flow: row wrap;
+      justify-content: space-between;
+      }
+      input {
+      width: 46%;
+      }
+      input.fname {
+      width: 100%;
+      }
+      select {
+      width: 48%;
+      }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-block">
+      <h1>Interaction Form</h1>
+      <form action="" id="interactionForm" method="post">
+        <div class="info">
+          <input class="fname" type="text" id="ame" name="name" placeholder="Interaction Title" required>
+          <input type="text" id="FirstName" name="FirstName" placeholder="First name" required>
+          <input type="text" id="LastName" name="LastName" placeholder="Last name" required>
+          <input type="email" id="Email" name="Email" placeholder="Email" required>
+          <input type="tel" id="Phone" name="Phone" placeholder="Phone number" required>
+          <input type="text" id="Street" name="Street" placeholder="Street" required>
+          <input type="text" id="City" name="City" placeholder="City" required>
+          <input type="hidden" id="Source" name="Source" value="Online Advertisement">
+          <select name="State" id="State" required>
+            <option value="" disabled selected>State</option>
+            <option value="Alabama">Alabama</option>
+            <option value="Alaska">Alaska</option>
+            <option value="Arizona">Arizona</option>
+            <option value="Arkansas">Arkansas</option>
+            <option value="California">California</option>
+            <option value="Colorado">Colorado</option>
+            <option value="Connecticut">Connecticut</option>
+            <option value="Delaware">Delaware</option>
+            <option value="Florida">Florida</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Hawaii">Hawaii</option>
+            <option value="Idaho">Idaho</option>
+            <option value="Illinois">Illinois</option>
+            <option value="Indiana">Indiana</option>
+            <option value="Iowa">Iowa</option>
+            <option value="Kansas">Kansas</option>
+            <option value="Kentucky">Kentucky</option>
+            <option value="Louisiana">Louisiana</option>
+            <option value="Maine">Maine</option>
+            <option value="Maryland">Maryland</option>
+            <option value="Massachusetts">Massachusetts</option>
+            <option value="Michigan">Michigan</option>
+            <option value="Minnesota">Minnesota</option>
+            <option value="Mississippi">Mississippi</option>
+            <option value="Missouri">Missouri</option>
+            <option value="Montana">Montana</option>
+            <option value="Nebraska">Nebraska</option>
+            <option value="Nevada">Nevada</option>
+            <option value="New Hampshire">New Hampshire</option>
+            <option value="New Jersey">New Jersey</option>
+            <option value="New Mexico">New Mexico</option>
+            <option value="New York">New York</option>
+            <option value="North Carolina">North Carolina</option>
+            <option value="North Dakota">North Dakota</option>
+            <option value="Ohio">Ohio</option>
+            <option value="Oklahoma">Oklahoma</option>
+            <option value="Oregon">Oregon</option>
+            <option value="Pennsylvania">Pennsylvania</option>
+            <option value="Rhode Island">Rhode Island</option>
+            <option value="South Carolina">South Carolina</option>
+            <option value="South Dakota">South Dakota</option>
+            <option value="Tennessee">Tennessee</option>
+            <option value="Texas">Texas</option>
+            <option value="Utah">Utah</option>
+            <option value="Vermont">Vermont</option>
+            <option value="Virginia">Virginia</option>
+            <option value="Washington">Washington</option>
+            <option value="West Virginia">West Virginia</option>
+            <option value="Wisconsin">Wisconsin</option>
+            <option value="Wyoming">Wyoming</option>
+          </select>
+          <input type="text" id="ZipCode" name="ZipCode" placeholder="ZIP Code" required>
+          <input type="text" id="Company" name="Company" placeholder="Company" required>
+          <select name="ProductOfInterest" id="ProductOfInterest" required>
+            <option value="" disabled selected>Product of Interest</option>
+            <option value="Pre-built Computer">Pre-built Computer</option>
+            <option value="Laptop">Laptop</option>
+            <option value="Tablet">Tablet</option>
+            <option value="Mother Board">Mother Board</option>
+            <option value="Memory">Memory</option>
+            <option value="Power Supply">Power Supply</option>
+            <option value="CPU">CPU</option>
+            <option value="Graphics Card">Graphics Card</option>
+            <option value="Peripherals">Peripherals</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <button type="submit" id="btnSubmit" href="/" class="button" onclick="userAction()">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
